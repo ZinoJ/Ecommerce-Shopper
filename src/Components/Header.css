@@ -1,0 +1,40 @@
+.header {
+   background-color: #0d1b2a;
+   color: white;
+   display: flex;
+   padding: 1rem 10%;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header__middle, .header__right, .header__menu {
+   display: flex;
+   gap: 1rem;
+   align-items: center;
+}
+.header__middle > p:hover, .header__right > p:hover {
+   color: #ff9100;
+   cursor: pointer;
+}
+
+.logo {
+   color: black;
+}
+
+span {
+   color: #f95738;
+}
+
+.header__menu {
+   display: none;
+}
+
+@media screen and (max-width:800px) {
+   .header__middle, .header__right {
+      display: none;
+   }
+
+   .header__menu {
+      display: flex;
+   }
+}

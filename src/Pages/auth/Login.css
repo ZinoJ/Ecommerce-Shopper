@@ -1,0 +1,52 @@
+.auth {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2%;
+  display: flex;
+}
+
+.form {
+  text-align: center;
+  width: 35rem;
+  padding: 1.5rem;
+}
+
+.form > form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+input {
+  padding: 8px 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding: 0.5rem;
+  width: 97%;
+  border: 1px solid #777;
+  border-radius: 3px;
+  outline: none;
+}
+
+.btn {
+   font-size: 1.6rem;
+   font-weight: 400;
+   padding: 6px 8px;
+   margin: 0 5px 0 0;
+   border: 1px solid transparent;
+   border-radius: 3px;
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
