@@ -1,0 +1,16 @@
+.searchbar {
+  flex: 1;
+  display: flex;
+  padding: 2px 10px;
+  align-items: center;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.searchbar > input {
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  outline: none;
+  border: none;
+}

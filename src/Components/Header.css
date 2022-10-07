@@ -7,6 +7,10 @@
    align-items: center;
 }
 
+p {
+   white-space: nowrap;
+}
+
 .header__middle, .header__right, .header__menu {
    display: flex;
    gap: 1rem;

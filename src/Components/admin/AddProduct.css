@@ -1,0 +1,55 @@
+/* .product {
+  background-color: red;
+} */
+
+.card {
+  width: 100%;
+  max-width: 550px;
+  padding: 1rem;
+  border: 1px solid gray;
+}
+
+.product > form > label {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.product > form > input,
+select,
+textarea {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  width: 100%;
+  border: 1px solid #777;
+  border-radius: 3px;
+  outline: none;
+}
+
+.bottom {
+  margin-bottom: 8px;
+}
+
+.progress {
+  background-color: #aaa;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.progress-bar {
+  background-color: #0d1b2a;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0 1rem;
+}
+
+.group {
+  border: 1px solid gray;
+  padding: 5px;
+}

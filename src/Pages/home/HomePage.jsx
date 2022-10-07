@@ -1,11 +1,13 @@
 import React from 'react'
-import Header from '../../Components/Header'
+import Product from '../../Components/product/Product'
+import Slider from '../../Components/Slider'
 import './HomePage.css'
 
 function HomePage() {
   return (
     <div className="homepage">
-      <h1>Home</h1>
+      {/* <Slider /> */}
+      <Product />
     </div>
   )
 }

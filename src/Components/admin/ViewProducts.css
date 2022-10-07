@@ -1,0 +1,44 @@
+.table {
+  padding: 5px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table > .search {
+  width: 100%;
+  max-width: 300px;
+}
+
+.table > table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.table > table > thead {
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+}
+
+th {
+  border: 1px solid #eee;
+}
+
+th,
+td {
+  vertical-align: top;
+  text-align: left;
+  padding: 8px;
+}
+td > .icons > * {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+tr {
+  border-bottom: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}

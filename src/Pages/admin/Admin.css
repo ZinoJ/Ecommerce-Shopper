@@ -1,0 +1,13 @@
+.admin {
+   display: flex;
+ }
+
+ .sidebarr {
+   width: 25%;
+   min-height: 80vh;
+ }
+
+ .contentt {
+   width: 75%;
+   padding: 1rem;
+ }
