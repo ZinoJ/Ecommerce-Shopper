@@ -84,7 +84,7 @@ function Header() {
         </h2>
       </div>
       <div className="header__middle">
-        {userEmail === process.env. && <button className="btn" onClick={() => navigate('/admin/home')}>Admin</button>}
+        {userEmail === process.env.REACT_ADMIN_EMAIL && <button className="btn" onClick={() => navigate('/admin/home')}>Admin</button>}
         <p onClick={() => navigate("/")}>Home</p>
         <p onClick={() => navigate('/contact')}>Contact Us</p>
       </div>
