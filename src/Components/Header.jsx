@@ -34,12 +34,12 @@ function Header() {
   
   useEffect(() => {
     dispatch(CALCULATE_TOTAL_QUANTITY())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        //   const uid = user.uid;
         if (user.displayName == null) {
           const u1 = user.email.substring(0, user.email.indexOf("@"));
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
