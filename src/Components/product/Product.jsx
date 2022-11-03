@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import useFetchCollection from '../../CustomHooks/useFetchCollection';
-import { selectProducts, STORE_PRODUCTS } from '../../Redux/slice/productSlice';
+import { GET_PRICE_RANGE, selectProducts, STORE_PRODUCTS } from '../../Redux/slice/productSlice';
 import './Product.css'
 import ProductFilter from './ProductFilter'
 import ProductList from './ProductList'
@@ -14,11 +14,12 @@ function Product() {
   // console.log(products);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(STORE_PRODUCTS({ products: data }));
+    dispatch(STORE_PRODUCTS({ products: data}));
+    dispatch(GET_PRICE_RANGE({products: data}))
   },[dispatch, data]);
   return (
     <section>
-      <div className="container product">
+      <div className="containerSize product">
         <aside className='filter'>
         {isLoading ? null : <ProductFilter /> }
           

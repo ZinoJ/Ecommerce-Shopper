@@ -1,0 +1,95 @@
+.cart {
+   width: 80%;
+   margin: 0 auto;
+   /* margin-block: 0.5rem; */
+}
+.cart > .table {
+   padding: 5px;
+   width: 100%;
+   overflow-x: auto;
+   
+ }
+ 
+ .cart > .table > table {
+   border-collapse: collapse;
+   width: 100%;
+   font-size: 1rem;
+   margin-top: 0.5rem;
+ }
+ 
+ .cart > .table > table > thead {
+   border-top: 1px solid gray;
+   border-bottom: 1px solid gray;
+ }
+ 
+ .cart > .table > table > th {
+   border: 1px solid #eee;
+ }
+ 
+ .cart > .table > table > th,
+ .cart > .table > table > td {
+   vertical-align: top;
+   text-align: left;
+   text-align: center;
+   padding: 8px;
+ }
+ .cart__icons {
+   margin-right: 5px;
+   cursor: pointer;
+ }
+ 
+ .cart > .table > table > tr {
+    border-bottom: 1px solid #ccc;
+    /* text-align: center; */
+ }
+ 
+ .cart > .table > table > tr:nth-child(even) {
+    background-color: #eee;
+ }
+ 
+ .cart > .table > .summary {
+    margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+ }
+ 
+ .cart__card > .text{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ 
+ .cart > .table > .cart__count {
+    display: flex;
+    align-items: center;
+ }
+
+ .cart__count {
+   display: flex;
+   align-items: center;
+ }
+ .cart__count > button{
+   padding: 4px 0.6rem;
+   border: none;
+   margin-inline: 8px;
+   background-color: #0d1b2a;
+   color: white;
+ }
+
+ .cart__card > button, .summary > button {
+   background-color: #0d1b2a;
+   color: white;
+   border: none;
+   padding: 8px 2rem;
+   border-radius: 3px;
+ }
+
+ .checkout {
+  padding: 12px;
+  border: 1px solid gray;
+  border-radius: 3px;
+ }
+ 
+ 
+ 

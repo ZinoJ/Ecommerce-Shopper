@@ -1,12 +1,13 @@
-.filter > h4 {
+
+.filter__container > h4 {
   margin-top: 1rem;
 }
-.filter > .category button {
+.filter__container > .category > button {
   display: block;
   text-align: left;
   width: 80%;
   height: 3rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -14,14 +15,21 @@
 }
 
 .filter > .brand > select {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 300;
   padding: 5px;
-
   width: 80%;
   border: 1px solid #777;
   border-radius: 3px;
   outline: none;
+}
+
+.filter__button {
+  padding: 6px 2rem;
+  border: none;
+  color: white;
+  background-color: #0d1b2a;
+  border-radius: 3px;
 }
 
 @media screen and (max-width: 700px) {

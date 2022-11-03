@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ADD_TO_CART, CALCULATE_TOTAL_QUANTITY } from "../../Redux/slice/cartSlice";
 import "./ProductItem.css";
 
 function ProductItem({ grid, product, id, name, price, imageURL, desc }) {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const shortenText = (text) => {
     if(text.length > 200) {
@@ -11,10 +14,15 @@ function ProductItem({ grid, product, id, name, price, imageURL, desc }) {
     }
     return text
   }
+
+  const addToCart = (product) => {
+    dispatch(ADD_TO_CART(product))
+    dispatch(CALCULATE_TOTAL_QUANTITY())
+  }
   return (
   
       <div className={grid ? "grid" : "list"}>
-        <div className="product_img" onClick={() => navigate("/product_details")}>
+        <div className="product_img" onClick={() => navigate(`/product_details/${id}`)}>
           <img src={imageURL} alt={name} />
         </div>
         <div className="content__product">
@@ -23,7 +31,7 @@ function ProductItem({ grid, product, id, name, price, imageURL, desc }) {
             <h5>{name}</h5>
           </div>
           {/* {!grid && <p className="desc">{desc}</p>} */}
-          <button>Add to cart</button>
+          <button onClick={() => addToCart(product)}>Add to cart</button>
         </div>
       </div>
   );

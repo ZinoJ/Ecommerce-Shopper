@@ -1,6 +1,7 @@
 .product {
   display: flex;
   position: relative;
+  gap: 2rem;
 }
 
 .filter {
@@ -55,4 +56,10 @@
   margin-left: 10rem;
   text-align: center;
   padding: 3rem;
+}
+
+.containerSize {
+  width: 80%;
+  margin: 0 auto;
+
 }

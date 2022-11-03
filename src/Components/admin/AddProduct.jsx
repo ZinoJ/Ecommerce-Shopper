@@ -44,7 +44,8 @@ function AddProduct() {
   const [isloading, setIsLoading] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
+    console.log(value)
+    // setProduct({ ...product, [name]: value });
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -115,8 +116,8 @@ function AddProduct() {
     <>
       {isloading && <Loader />}
       <div className="product">
-        <h2>{detectForm(id, "Add New Product", "Edit Product")}</h2>
         <div className="card">
+        <h2>{detectForm(id, "Add New Product", "Edit Product")}</h2>
           <form onSubmit={detectForm(id, addProduct, editProduct)}>
             <label htmlFor="">Product name</label>
             <input
@@ -163,7 +164,7 @@ function AddProduct() {
                 />
               )}
             </div>
-            <label htmlFor="">Product price</label>
+            <label>Product price</label>
             <input
               type="number"
               placeholder="Product Price"

@@ -16,13 +16,18 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useFetchCollection from "../../CustomHooks/useFetchCollection.js";
 import { db, storage } from "../../Firebase/firebase.js";
+import { FILTER_BY_SEARCH, selectFilteredProducts } from "../../Redux/slice/filterSlice.js";
 import { selectProducts, STORE_PRODUCTS } from "../../Redux/slice/productSlice.js";
 import Loader from "../Loader.jsx";
+import Search from "../Search.jsx";
 import "./ViewProducts.css";
 
 function ViewProducts() {
   const { data, isLoading } = useFetchCollection("products");
   const navigate = useNavigate();
+  const [search,setSearch] = useState('')
+  const filteredProducts = useSelector(selectFilteredProducts)
+  
 
   const products = useSelector(selectProducts)
   // const [products, setProducts] = useState([]);
@@ -31,6 +36,13 @@ function ViewProducts() {
   useEffect(() => {
     dispatch(STORE_PRODUCTS({ products: data }));
   },[dispatch, data]);
+
+  useEffect(() => {
+    dispatch(FILTER_BY_SEARCH({
+      products: products,
+      search
+    }))
+  },[search,dispatch,products])
 
   // useEffect(() => {
   //   getProducts();
@@ -93,7 +105,12 @@ function ViewProducts() {
       {isLoading && <Loader />}
       <div className="table">
         <h3>All Products</h3>
-        {products.length === 0 ? (
+        <div className="search">
+          <p><b>{filteredProducts.length}</b> products found</p>
+        <Search value={search} onChange={e => setSearch(e.target.value)}/>
+        <br />
+        </div>
+        {filteredProducts.length === 0 ? (
           <p>No Product Found</p>
         ) : (
           <table>
@@ -108,7 +125,7 @@ function ViewProducts() {
               </tr>
             </thead>
             <tbody>
-              {products.map((product, index) => {
+              {filteredProducts.map((product, index) => {
                 const { id, name, price, imageURL, category } = product;
                 return (
                   <tr key={id}>

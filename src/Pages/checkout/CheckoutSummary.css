@@ -1,0 +1,25 @@
+.checkout__summary {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
+  border: 1px solid gray;
+  margin-bottom: 5px;
+  border-radius: 3px;
+}
+.checkout__summary > h3 {
+  font-weight: 500;
+  color: red;
+}
+
+.checkoutsummary__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkoutsummary__card {
+   padding: 0.5rem;
+   border: 1px solid gray;
+   border-radius: 3px;
+   margin-bottom: 0.5rem;
+}

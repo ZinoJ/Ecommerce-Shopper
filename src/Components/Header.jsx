@@ -13,14 +13,28 @@ import {
   selectEmail,
   SET_ACTIVE_USER,
 } from "../Redux/slice/authSlice";
+import { CALCULATE_TOTAL_QUANTITY, selectCartTotalQuantity } from "../Redux/slice/cartSlice";
 
 function Header() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [scrollPage, setScrollPage] = useState(false)
   const [username, setUsername] = useState("");
   const userEmail = useSelector(selectEmail)
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity)
+  const fixNavbar = () => {
+    if(window.scrollY > 50) {
+      setScrollPage(true)
+    } else {
+      setScrollPage(false)
+    }
+  }
+  window.addEventListener("scroll", fixNavbar)
   
+  useEffect(() => {
+    dispatch(CALCULATE_TOTAL_QUANTITY())
+  },[])
   
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -63,32 +77,34 @@ function Header() {
 //  console.log(isLoggedIn)
 
   return (
-    <div className="header">
+    <div className={scrollPage ? `header fixed` : 'header'}>
       <div className="header__left">
-        <h2 onClick={() => navigate('/')}>
+        <h2 onClick={() => navigate('/#products')} style={{cursor: 'pointer'}}>
           E<span>Shopper</span>
         </h2>
       </div>
       <div className="header__middle">
-        {userEmail === "joshuaubiri@gmail.com" && <button className="btn" onClick={() => navigate('/admin/home')}>Admin</button>}
+        {userEmail === process.env. && <button className="btn" onClick={() => navigate('/admin/home')}>Admin</button>}
         <p onClick={() => navigate("/")}>Home</p>
-        <p>Contact Us</p>
+        <p onClick={() => navigate('/contact')}>Contact Us</p>
       </div>
       <div className="header__right">
         {!isLoggedIn && <p onClick={() => navigate("/login")}>Login</p>}
         {isLoggedIn && <span>
           <FaUserCircle size={16} /> Hi, {username}
         </span>}
-        {isLoggedIn && <p>My Orders</p>}
+        {isLoggedIn && <p onClick={() => navigate('/order_history')}>My Orders</p>}
         {isLoggedIn && <p onClick={logoutUser}>Logout</p>}
-        <p>
+        <p onClick={() => navigate('/cart')} style={{cursor: 'pointer'}}>
           Cart <FaShoppingCart size={20} />
+           <sup>{cartTotalQuantity}</sup>
         </p>
       </div>
       <div className="header__menu">
         <p>
-          Cart <FaShoppingCart size={18} />
+          Cart <FaShoppingCart size={18}/> <sup>{cartTotalQuantity}</sup>
         </p>
+
         <HiOutlineMenuAlt3 size={25} />
       </div>
     </div>
