@@ -1,4 +1,4 @@
-.filter__container{
+.filter__container {
  text-align: center;
   padding: 1rem;
   margin-top: 2.8rem;
@@ -35,14 +35,14 @@
   color: white;
   background-color: #0d1b2a;
   border-radius: 3px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .closeFilter {
   padding: 6px 2rem;
   border: none;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   background-color: #f95738;
   border-radius: 3px;

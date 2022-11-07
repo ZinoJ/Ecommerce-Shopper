@@ -69,9 +69,9 @@ function ProductFilter({showMenu, setShowMenu}) {
         <div className="price">
           <input type="range"  value={price} onChange={e => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
-        <button className="filter__button" onClick={clearFilter}>Clear Filter</button>
+        <button className="filter__button" onClick={clearFilter}>CLEAR</button>
         <br />
-        <button className="closeFilter" onClick={() => setShowMenu(!showMenu)}>Close Filter</button>
+        <button className="closeFilter" onClick={() => setShowMenu(!showMenu)}>CLOSE</button>
       </div>
     </div>
   );
