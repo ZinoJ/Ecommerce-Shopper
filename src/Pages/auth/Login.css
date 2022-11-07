@@ -50,12 +50,13 @@ input {
 
 .btn {
    font-size: 1.1rem;
-   font-weight: 400;
+   font-weight: 500;
    padding: 6px 8px;
    margin: 0 5px 0 0;
    background-color: white;
    border: 1px solid transparent;
    border-radius: 3px;
+   color: #0d1b2a;
    cursor: pointer;
    display: flex;
    justify-content: center;

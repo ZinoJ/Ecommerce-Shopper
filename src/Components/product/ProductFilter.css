@@ -35,6 +35,16 @@
   color: white;
   background-color: #0d1b2a;
   border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.closeFilter {
+  padding: 6px 2rem;
+  border: none;
+  color: white;
+  background-color: orangered;
+  border-radius: 3px;
+  margin-right: 6px;
 }
 
 @media screen and (max-width: 700px) {

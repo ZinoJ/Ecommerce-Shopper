@@ -155,7 +155,7 @@ function Header() {
         </div>
 
         <div className="header__menu">
-          <p>
+          <p onClick={() => navigate("/cart")} style={{ cursor: "pointer" }}>
             Cart <FaShoppingCart size={18} /> <sup>{cartTotalQuantity}</sup>
           </p>
 

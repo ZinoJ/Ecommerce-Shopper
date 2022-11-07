@@ -4,7 +4,7 @@ import { FILTER_BY_BRAND, FILTER_BY_CATEGORY, FILTER_BY_PRICE } from "../../Redu
 import { selectMaxPrice, selectMinPrice, selectProducts } from "../../Redux/slice/productSlice";
 import "./ProductFilter.css";
 
-function ProductFilter() {
+function ProductFilter({showMenu, setShowMenu}) {
   // eslint-disable-next-line no-unused-vars
   const [category, setCategory] = useState("All");
   const [brand, setBrand] = useState("All");
@@ -70,6 +70,8 @@ function ProductFilter() {
           <input type="range"  value={price} onChange={e => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
         <button className="filter__button" onClick={clearFilter}>Clear Filter</button>
+        <br />
+        <button className="closeFilter" onClick={() => setShowMenu(!showMenu)}>Close Filter</button>
       </div>
     </div>
   );

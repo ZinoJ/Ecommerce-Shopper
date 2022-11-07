@@ -7,13 +7,6 @@ import "./ProductItem.css";
 function ProductItem({ grid, product, id, name, price, imageURL, desc }) {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const shortenText = (text) => {
-    if(text.length > 200) {
-      const shortenedText = text.substring(0,15).concat("...")
-      return shortenText
-    }
-    return text
-  }
 
   const addToCart = (product) => {
     dispatch(ADD_TO_CART(product))

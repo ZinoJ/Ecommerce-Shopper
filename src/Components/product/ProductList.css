@@ -34,17 +34,21 @@
   display: flex;
   align-items: center;
   margin-left: 10px;
+  gap: 1rem;
   
 }
 
 .sort > label {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   white-space: nowrap;
+  
   
 }
 .sort > select {
-  
+  background-color: #0d1b2a;
+  margin-right: 10px;
+  color:white;
   font-size: 1.2rem;
   border: none;
   outline: none;
@@ -60,9 +64,3 @@
   }
 }
 
-/* .grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background-color: #fffdf7;
-} */

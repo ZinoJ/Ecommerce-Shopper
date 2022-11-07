@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './ProductList.css'
-import {BsFillGridFill} from 'react-icons/bs'
-import { useNavigate } from 'react-router-dom'
-import { FaListAlt } from 'react-icons/fa'
 import Search from '../Search'
 import ProductItem from './ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +7,7 @@ import { FILTER_BY_SEARCH, selectFilteredProducts, SORT_PRODUCTS } from '../../R
 
 function ProductList({products}) {
   // const navigate = useNavigate()
+  // eslint-disable-next-line no-unused-vars
   const [grid, setGrid] = useState(true)
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('latest')
@@ -41,7 +39,7 @@ function ProductList({products}) {
           <Search value={search} onChange={e => setSearch(e.target.value)}/>
         </div>
         <div className="sort">
-          <label>Sort by:</label>
+          <label>Sort by :</label>
           <select value={sort} onChange={e => setSort(e.target.value)}>
             <option value="latest">Latest</option>
             <option value="lowest-price">Lowest Price</option>

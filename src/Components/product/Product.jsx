@@ -22,7 +22,7 @@ function Product() {
   return (
     <div className='container'>
       {showMenu && <aside className='hiddenFilter'>
-        {isLoading ? null : <ProductFilter /> }
+        {isLoading ? null : <ProductFilter showMenu= {showMenu} setShowMenu= {setShowMenu} /> }
         </aside>}
       <div className="product">
         <aside className='filter'>
@@ -30,7 +30,7 @@ function Product() {
         </aside>
         
         <div className="product__content">
-        <h3 className='showFilter'onClick={() => setShowMenu(!showMenu)}>{showMenu ? 'Hide filter' : "Show Filter"}</h3>
+        <h3 className='showFilter' onClick={() => setShowMenu(!showMenu)}style={{ cursor: "pointer" }}>{showMenu ? 'Hide filter' : "Show Filter"}</h3>
           {isLoading ? <img src={spinnerImg} alt="Loading .." style={{width: "50px"}} className="center-all"/> : <ProductList products={products}/> }
         </div>
       </div>
