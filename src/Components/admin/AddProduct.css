@@ -4,9 +4,16 @@
 
 .card {
   width: 100%;
-  max-width: 550px;
+  max-width: 500px;
+  /* max-width: 550px; */
+  /* original */
   padding: 1rem;
   border: 1px solid gray;
+}
+
+.add__product_form {
+  display: flex;
+  flex-direction: column;
 }
 
 .product > form > label {
@@ -15,7 +22,7 @@
   font-weight: 500;
 }
 
-.product > form > input,
+.product .card > form > input,
 select{
   display: block;
   font-size: 1.2rem;

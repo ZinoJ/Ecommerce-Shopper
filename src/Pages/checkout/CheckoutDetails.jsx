@@ -53,7 +53,8 @@ function CheckoutDetails() {
 
   
   return (
-     <div className="checkout__details">
+     <div className="container">
+      <div className="checkout__details">
        <h2 style={{marginBottom: "0.4rem"}}>Checkout Details</h2>
        <form onSubmit={handleSubmit}><div>
           <div className="card">
@@ -111,16 +112,8 @@ function CheckoutDetails() {
        </form>
 
      </div>
-    
-    // <div className="checkout__details">
-    //   <h2 style={{ marginBottom: "0.4rem" }}>Checkout Details</h2>
-    //   <form>
-    //     <div>
-    //       <CheckoutSummary saveOrder={saveOrder}/>
-    //     </div>
-    //   </form>
-    //   <button onClick={saveOrder}>CheckOut</button>
-    // </div>
+     </div>
+  
   );
 }
 

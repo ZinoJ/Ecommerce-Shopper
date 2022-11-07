@@ -46,7 +46,8 @@ function ReviewProducts() {
     }
   };
   return (
-    <div className="checkout__details review">
+    <div className="container">
+      <div className="checkout__details review">
       <h2>Review Products</h2>
       {product === null ? (
         <img src={spinnerImg} alt="Loading ..." width={50}/>
@@ -73,6 +74,7 @@ function ReviewProducts() {
           <br />
           <br />
           <h4>Review</h4>
+          <br />
           <textarea
             name=""
             value={review}
@@ -80,11 +82,12 @@ function ReviewProducts() {
             onChange={(e) => setReview(e.target.value)}
             cols="30"
               rows="10"
-              style={{ width: "450px" }}
+              style={{ width: "350px",maxWidth:"100%" }}
           ></textarea>
           <button type="submit" className="bot">Submit Review</button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

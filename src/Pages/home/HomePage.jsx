@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Product from '../../Components/product/Product'
-import Slider from '../../Components/Slider'
+// import Slider from '../../Components/Slider'
 import './HomePage.css'
 
 function HomePage() {
@@ -20,7 +20,7 @@ function HomePage() {
   
   return (
     <div className="homepage">
-      <Slider />
+      {/* <Slider /> */}
       <Product />
     </div>
   )

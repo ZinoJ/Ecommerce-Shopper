@@ -42,12 +42,12 @@ function ResetPassword() {
               required
             />
             <button className="btn" type="submit">
-              Reset
+              Reset Password
             </button>
           </form>
           <p>
             Already have an account?{" "}
-            <span onClick={() => navigate("/login")}>Sign In</span>
+            <span onClick={() => navigate("/login")} style={{cursor: 'pointer'}}>Sign In</span>
           </p>
         </div>
       </div>

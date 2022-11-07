@@ -1,7 +1,6 @@
 .checkout__details {
-  width: 80%;
-  position: relative;
-  margin: 1rem auto;
+  width: 100%;
+  padding: 0.6rem 0;
 }
 
 .checkout__details > .card {
@@ -14,7 +13,7 @@
 .checkout__details > form {
   width: 100%;
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
 }
 
 .checkout__details > form > div {
@@ -46,7 +45,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .checkout > form {
+  .checkout__details > form {
     flex-direction: column;
   }
   div {
@@ -55,6 +54,7 @@
 }
 
 .succ {
+  margin-top: 2rem;
   padding: 1rem;
   border: 1px solid gray;
 }

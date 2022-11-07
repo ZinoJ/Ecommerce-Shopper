@@ -54,7 +54,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="productDetails__container">
+    <div className="container">
       <div className="productDetails">
         <h2>Product Details</h2>
         <div>
@@ -79,7 +79,7 @@ const ProductDetails = () => {
                   Price: ${product.price}
                 </h4>
                 <p className="wrap">{product.desc}</p>
-                <p>
+                <p className="wrap">
                   <b>SKU</b> {product.id}
                 </p>
                 <p>
@@ -126,7 +126,7 @@ const ProductDetails = () => {
                 return (
                   <div className="review" key={index}>
                     <StarsRating value={rate} />
-                    <p>{review}</p>
+                    <p className="wrap">{review}</p>
                     <span><b>{reviewDate}</b></span>
                     <br />
                     <span><b> by {username}</b></span>

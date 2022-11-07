@@ -13,30 +13,51 @@ import {
   selectEmail,
   SET_ACTIVE_USER,
 } from "../Redux/slice/authSlice";
-import { CALCULATE_TOTAL_QUANTITY, selectCartTotalQuantity } from "../Redux/slice/cartSlice";
+import {
+  CALCULATE_TOTAL_QUANTITY,
+  selectCartTotalQuantity,
+} from "../Redux/slice/cartSlice";
 
 function Header() {
+  const [showMenu, setShowMenu] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [scrollPage, setScrollPage] = useState(false)
   const [username, setUsername] = useState("");
-  const userEmail = useSelector(selectEmail)
-  const cartTotalQuantity = useSelector(selectCartTotalQuantity)
-  const fixNavbar = () => {
-    if(window.scrollY > 50) {
-      setScrollPage(true)
-    } else {
-      setScrollPage(false)
+  const userEmail = useSelector(selectEmail);
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+
+  React.useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 800) {
+        setShowMenu(true);
+      } else {
+        setShowMenu(false)
+      }
+      
     }
-  }
-  window.addEventListener("scroll", fixNavbar)
-  
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const hideMenu = () => {
+    setShowMenu(false);
+  };
+
   useEffect(() => {
-    dispatch(CALCULATE_TOTAL_QUANTITY())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-  
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -63,49 +84,83 @@ function Header() {
   }, [dispatch, username]);
 
   const logoutUser = () => {
-   signOut(auth)
-     .then(() => {
-       // Sign-out successful.
-       toast.success("Successfully SignedOut");
-      //  dispatch(REMOVE_ACTIVE_USER()); 
-     })
-     .catch((error) => {
-       toast.error(error.message);
-     });
-     navigate("/login");
- };
-//  console.log(isLoggedIn)
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        toast.success("Successfully SignedOut");
+        //  dispatch(REMOVE_ACTIVE_USER());
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    navigate("/login");
+  };
 
   return (
-    <div className={scrollPage ? `header fixed` : 'header'}>
-      <div className="header__left">
-        <h2 onClick={() => navigate('/#products')} style={{cursor: 'pointer'}}>
-          E<span>Shopper</span>
-        </h2>
-      </div>
-      <div className="header__middle">
-        {userEmail === process.env.REACT_ADMIN_EMAIL && <button className="btn" onClick={() => navigate('/admin/home')}>Admin</button>}
+    <div className="header">
+      <div className={showMenu ? 'nav-wrapper' : 'hide'} onClick={hideMenu}> </div>
+      <div className={showMenu ? 'hiddenNav' : 'hide'} onClick={hideMenu} >
+        {userEmail === process.env.REACT_APP_ADMIN_USER && (
+          <button className="btn" onClick={() => navigate("/admin/home")}>
+            Admin
+          </button>
+        )}
         <p onClick={() => navigate("/")}>Home</p>
-        <p onClick={() => navigate('/contact')}>Contact Us</p>
-      </div>
-      <div className="header__right">
+        <p onClick={() => navigate("/contact")}>Contact Us</p>
         {!isLoggedIn && <p onClick={() => navigate("/login")}>Login</p>}
-        {isLoggedIn && <span>
-          <FaUserCircle size={16} /> Hi, {username}
-        </span>}
-        {isLoggedIn && <p onClick={() => navigate('/order_history')}>My Orders</p>}
+        {isLoggedIn && (
+          <span>
+            <FaUserCircle size={16} /> Hi, {username}
+          </span>
+        )}
+        {isLoggedIn && (
+          <p onClick={() => navigate("/order_history")}>My Orders</p>
+        )}
         {isLoggedIn && <p onClick={logoutUser}>Logout</p>}
-        <p onClick={() => navigate('/cart')} style={{cursor: 'pointer'}}>
-          Cart <FaShoppingCart size={20} />
-           <sup>{cartTotalQuantity}</sup>
-        </p>
       </div>
-      <div className="header__menu">
-        <p>
-          Cart <FaShoppingCart size={18}/> <sup>{cartTotalQuantity}</sup>
-        </p>
+      
+      <div className="container">
+        <div className="header__left">
+          <h2
+            onClick={() => navigate("/#products")}
+            style={{ cursor: "pointer" }}
+          >
+            E<span>Shopper</span>
+          </h2>
+        </div>
+        <div className="header__middle">
+          {userEmail === process.env.REACT_APP_ADMIN_USER && (
+            <button className="btn" onClick={() => navigate("/admin/home")}>
+              Admin
+            </button>
+          )}
+          <p onClick={() => navigate("/")}>Home</p>
+          <p onClick={() => navigate("/contact")}>Contact Us</p>
+        </div>
+        <div className="header__right">
+          {!isLoggedIn && <p onClick={() => navigate("/login")}>Login</p>}
+          {isLoggedIn && (
+            <span>
+              <FaUserCircle size={16} /> Hi, {username}
+            </span>
+          )}
+          {isLoggedIn && (
+            <p onClick={() => navigate("/order_history")}>My Orders</p>
+          )}
+          {isLoggedIn && <p onClick={logoutUser}>Logout</p>}
+          <p onClick={() => navigate("/cart")} style={{ cursor: "pointer" }}>
+            Cart <FaShoppingCart size={20} />
+            <sup>{cartTotalQuantity}</sup>
+          </p>
+        </div>
 
-        <HiOutlineMenuAlt3 size={25} />
+        <div className="header__menu">
+          <p>
+            Cart <FaShoppingCart size={18} /> <sup>{cartTotalQuantity}</sup>
+          </p>
+
+          <HiOutlineMenuAlt3 size={25} onClick={toggleMenu}/>
+        </div>
       </div>
     </div>
   );

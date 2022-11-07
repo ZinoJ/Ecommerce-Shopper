@@ -28,10 +28,10 @@ function Login() {
    e.preventDefault()
    setIsLoading(true)
    signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
+  .then(() => {
     // Signed in 
-    const user = userCredential.user;
-    console.log(user);
+    // const user = userCredential.user;
+    // console.log(user);
     toast.success('Login Succesful')
     setIsLoading(false)
     redirectUser()
@@ -61,10 +61,10 @@ function Login() {
     <div className="auth">
       <div className="container">
         <div className="image">
-          <img src={loginImg} alt="" width={400} />
+          <img src={loginImg} alt="" />
         </div>
         <div className="form">
-          <h2>Login</h2>
+          <h2>Log into your account</h2>
           <form onSubmit={loginUser}>
             <input
               type="email"
@@ -82,14 +82,15 @@ function Login() {
             />
             <button className="btn" type="submit">Login</button>
             <div className="bottom">
-              <p onClick={() => navigate("/resetpassword")}>Forgot Password</p>
-              <p>-- or --</p>
+              <p onClick={() => navigate("/resetpassword")} style={{cursor: 'pointer'}}>Forgot Password ?</p>
+              <p>----- or -----</p>
             </div>
           </form>
           <button className="btn" onClick={loginWithGoogle}>Sign In with Google</button>
-          <p>
-            Dont have an account?{" "}
-            <span onClick={() => navigate("/register")}>Register</span>
+          <br />
+          <p className="wrap">
+            Dont have an account?
+            <span onClick={() => navigate("/register")} style={{cursor: 'pointer'}}> Register</span>
           </p>
         </div>
       </div>

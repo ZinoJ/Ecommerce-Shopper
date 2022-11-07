@@ -1,29 +1,36 @@
 .contact {
-  padding: 1rem;
-  border: 1px solid #ccc;
+  margin-bottom: 2rem;
 }
-
 .contact > h2 {
-   margin-left: 1rem;
-   margin-bottom: 0.6rem;
+   margin: 1rem 0;
 }
 
 .contact__details {
-   padding: 1rem;
-   background-color: rgb(204, 195, 195);
+   padding: 1rem 2rem;
+   background-color: #0d1b2ae8;
+   margin-top: -0.2rem;
+   border-radius: 4px;
+   
+}
+
+.icons > span {
+  color: whitesmoke;
 }
 
 .section {
   display: flex;
   align-items: start;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .section > form {
-  width: 500px;
+  width: 550px;
   max-width: 100%;
-  margin-right: 1rem;
+  padding: 1rem;
   margin-bottom: 1rem;
+  border: 1px solid gray;
 }
 
 .cont > label {
@@ -56,8 +63,12 @@
    margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .contact > .section {
     flex-direction: column;
+  }
+
+  .contact__details {
+    text-align: center;
   }
 }

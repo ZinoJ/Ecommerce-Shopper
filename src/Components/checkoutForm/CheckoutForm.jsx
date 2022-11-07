@@ -110,20 +110,21 @@ export default function CheckoutForm() {
   };
 
   return (
-    <div className="checkout">
+    <div className="container">
+      <div className="checkout">
       <h2>Checkout</h2>
+      <br />
       <form onSubmit={handleSubmit}>
         <div className="width">
           <CheckoutSummary />
         </div>
         <div className="width pay">
           <h3>Stripe Checkout</h3>
-          <br />
           <PaymentElement id="payment-element" />
           <button
             disabled={isLoading || !stripe || !elements}
             id="submit"
-            className="btn"
+            className="button"
           >
             <span id="button-text">
               {isLoading ? (
@@ -141,6 +142,7 @@ export default function CheckoutForm() {
           {message && <div id="payment-message">{message}</div>}
         </div>
       </form>
+    </div>
     </div>
   );
 }

@@ -32,11 +32,11 @@ function ProductList({products}) {
   return (
     <div className="product-list" id='product'>
       <div className="top">
-        <div className="icons">
+        {/* <div className="icons">
           <BsFillGridFill size={22} color="orangered" onClick={() => setGrid(true)}/>
           <FaListAlt size={22} color="#0066d4" onClick={() => setGrid(false)}/>
           <p>{filteredProducts.length} Products found</p>
-        </div>
+        </div> */}
         <div>
           <Search value={search} onChange={e => setSearch(e.target.value)}/>
         </div>

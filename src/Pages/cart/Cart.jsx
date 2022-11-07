@@ -109,8 +109,9 @@ function Cart() {
                 })}
               </tbody>
             </table>
-            <div className="summary">
-               <button onClick={clearCart}>Clear Cart</button>
+            <br />
+            <button onClick={clearCart}className="clearcart">Clear Cart</button>
+               
                <div className="checkout">
                   <p onClick={() => navigate('/#products')} style={{cursor: 'pointer'}}>&larr; Continue Shopping</p>
                   <br />
@@ -121,10 +122,11 @@ function Cart() {
                         <h3>{`$${cartTotalAmount.toFixed(2)}`}</h3>
                      </div>
                      <h6>Tax and Shipping calculated at checkout</h6>
-                     <button onClick={checkout}>Checkout</button>
+                     <br />
+                     <button className="bot" onClick={checkout}>Checkout</button>
                   </div>
                </div>
-            </div>
+            
           </>
         )}
       </div>

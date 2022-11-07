@@ -23,13 +23,13 @@ function Orders() {
     dispatch(STORE_ORDERS(data));
   }, [dispatch, data]);
   return (
-    <div className="checkout__details table">
+    <div className="container">
+      <div className="checkout__details table">
       <h2>Your Order History</h2>
       <p>Open an order to leave a Product review</p>
       <br />
       <>
         {isLoading && <Loader />}
-        <div className="tables">
           {filteredOrders.length === 0 ? (
             <p>No Order Found</p>
           ) : (
@@ -72,8 +72,8 @@ function Orders() {
               </tbody>
             </table>
           )}
-        </div>
       </>
+    </div>
     </div>
   );
 }

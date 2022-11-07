@@ -5,6 +5,7 @@ import { selectMaxPrice, selectMinPrice, selectProducts } from "../../Redux/slic
 import "./ProductFilter.css";
 
 function ProductFilter() {
+  // eslint-disable-next-line no-unused-vars
   const [category, setCategory] = useState("All");
   const [brand, setBrand] = useState("All");
   const [price, setPrice] = useState(4000)
@@ -26,7 +27,7 @@ function ProductFilter() {
   },[dispatch,brand,products])
   useEffect(() => {
     dispatch(FILTER_BY_PRICE({products,price}))
-  },[dispatch,brand,price])
+  },[dispatch,brand,price,products])
   const filterProducts = (category) => {
     setCategory(category);
     dispatch(FILTER_BY_CATEGORY({ products, category: category }));
@@ -42,12 +43,12 @@ function ProductFilter() {
   return (
     <div className="filter__container">
       <h4>Categories</h4>
-      <div className="category">
+      <div className="categoryy">
         {allCategories.map((category, index) => (
           <button
             key={index}
             type="button"
-            className={`${category}` === category ? `active` : null}
+            // className={`${category}` === category ? `active` : null}
             onClick={() => filterProducts(category)}
           >
             {/* </button>/<button key={index} type="button" className="active"> */}
@@ -55,7 +56,8 @@ function ProductFilter() {
           </button>
         ))}
       </div>
-      <h4>Brand</h4>
+      <br />
+      <h4>Brands</h4>
       <div className="brand">
         <select value={brand} onChange={(e) => setBrand(e.target.value)}>
           {allBrands.map((brand, index) => (
@@ -67,7 +69,6 @@ function ProductFilter() {
         <div className="price">
           <input type="range"  value={price} onChange={e => setPrice(e.target.value)} min={minPrice} max={maxPrice} />
         </div>
-        <br />
         <button className="filter__button" onClick={clearFilter}>Clear Filter</button>
       </div>
     </div>

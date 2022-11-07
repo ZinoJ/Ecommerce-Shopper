@@ -13,7 +13,8 @@ function OrderDetails() {
   },[document])
   
   return (
-    <div className="checkout__details table" >
+    <div className="container">
+      <div className="checkout__details table" >
       <h2>Order Details</h2>
       <div>
         <p onClick={() => navigate('/order_history')} style={{cursor: 'pointer'}}>&larr; Back to Orders</p>
@@ -60,6 +61,7 @@ function OrderDetails() {
         </>
       )}
 
+    </div>
     </div>
   )
 }

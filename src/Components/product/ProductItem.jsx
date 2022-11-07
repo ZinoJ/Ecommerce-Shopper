@@ -30,7 +30,7 @@ function ProductItem({ grid, product, id, name, price, imageURL, desc }) {
             <p><strong>{`$${price}`}</strong></p>
             <h5>{name}</h5>
           </div>
-          {/* {!grid && <p className="desc">{desc}</p>} */}
+          
           <button onClick={() => addToCart(product)}>Add to cart</button>
         </div>
       </div>

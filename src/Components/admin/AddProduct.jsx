@@ -1,5 +1,10 @@
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
-import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -36,7 +41,7 @@ function AddProduct() {
   const products = useSelector(selectProducts);
   const productEdit = products.find((product) => product.id == id);
   const [product, setProduct] = useState(() => {
-    const newState = detectForm(id, { ...initialState }, productEdit)
+    const newState = detectForm(id, { ...initialState }, productEdit);
     return newState;
   });
 
@@ -44,7 +49,7 @@ function AddProduct() {
   const [isloading, setIsLoading] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(value)
+    console.log(value);
     // setProduct({ ...product, [name]: value });
   };
   const handleImageChange = (e) => {
@@ -93,19 +98,19 @@ function AddProduct() {
   const editProduct = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (product.imageURL !== productEdit.imageURL){
-      const storageRef = ref(storage, productEdit.imageURL)
-      deleteObject(storageRef)
+    if (product.imageURL !== productEdit.imageURL) {
+      const storageRef = ref(storage, productEdit.imageURL);
+      deleteObject(storageRef);
     }
     try {
       setDoc(doc(db, "products", id), {
         ...product,
         createdAt: productEdit.createdAt,
-        editedAt: Timestamp.now().toDate()
+        editedAt: Timestamp.now().toDate(),
       });
-      setIsLoading(false)
-      toast.success("Edited Successsfully")
-      navigate('/admin/products')
+      setIsLoading(false);
+      toast.success("Edited Successsfully");
+      navigate("/admin/products");
     } catch (error) {
       setIsLoading(false);
       toast.error(error.message);
@@ -117,8 +122,8 @@ function AddProduct() {
       {isloading && <Loader />}
       <div className="product">
         <div className="card">
-        <h2>{detectForm(id, "Add New Product", "Edit Product")}</h2>
-          <form onSubmit={detectForm(id, addProduct, editProduct)}>
+          <h2>{detectForm(id, "Add New Product", "Edit Product")}</h2>
+          <form onSubmit={detectForm(id, addProduct, editProduct)} className="add__product_form">
             <label htmlFor="">Product name</label>
             <input
               type="text"
@@ -207,7 +212,7 @@ function AddProduct() {
               onChange={(e) => handleInputChange(e)}
               cols="30"
               rows="10"
-              style={{ width: "480px" }}
+              style={{ width: "480px",maxWidth:"100%", marginBottom:"0.8rem" }}
             />
             <button
               className="btn"

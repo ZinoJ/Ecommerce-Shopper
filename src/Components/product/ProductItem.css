@@ -29,10 +29,13 @@
   color: orangered;
 }
 
-.grid > .content__product > button {
-  display: block;
-  width: 100%;
+.grid > .content__product{
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 1rem;
 }
+
 
 .list {
   width: 100%;

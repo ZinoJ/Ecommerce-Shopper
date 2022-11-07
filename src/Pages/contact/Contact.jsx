@@ -22,7 +22,8 @@ function Contact() {
       e.target.reset()
   };
   return (
-    <div className="checkout__details contact">
+    <div className="container">
+      <div className="contact">
       <h2>Contact Us</h2>
       <div className="section">
          <form ref={form} onSubmit={sendEmail}>
@@ -39,19 +40,20 @@ function Contact() {
                <label>Message</label>
                <textarea name="message" cols="30"
               rows="10"
-              style={{ width: "450px" }}></textarea>
+              style={{ width: "550px",maxWidth:"100%" }}></textarea>
                <button type='submit' className='bot'>Send Message</button>
 
             </div>
          </form>
          <div className="contact__details">
-            <div className="">
+            <div className="" style={{color: "#f95738"}}>
                <h3>Our Contact Information</h3>
-               <p>Fill the form or contact us via other channels listed below</p>
+               <p className='wrap'>Fill the form or contact us via other channels listed below</p>
+               <br />
                <div className="icons">
                   <span>
                      <FaPhoneAlt />
-                     <p>+2348130609629</p>
+                     <p>+2349079307571</p>
                   </span>
                   <span>
                      <FaEnvelope />
@@ -69,6 +71,7 @@ function Contact() {
             </div>
          </div>
       </div>
+    </div>
     </div>
   )
 }
