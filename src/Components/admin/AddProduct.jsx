@@ -1,3 +1,4 @@
+
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import {
   deleteObject,
@@ -48,6 +49,7 @@ function AddProduct() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isloading, setIsLoading] = useState(false);
   const handleInputChange = (e) => {
+    // eslint-disable-next-line no-unused-vars
     const { name, value } = e.target;
     console.log(value);
     // setProduct({ ...product, [name]: value });
@@ -80,6 +82,7 @@ function AddProduct() {
     e.preventDefault();
     setIsLoading(true);
     try {
+      // eslint-disable-next-line no-unused-vars
       const docRef = addDoc(collection(db, "products"), {
         ...product,
         price: Number(product.price),
