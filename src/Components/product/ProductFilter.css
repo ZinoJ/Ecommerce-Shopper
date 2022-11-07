@@ -4,9 +4,9 @@
   margin-top: 2.8rem;
 }
 
-.filter__container > h4 {
+/* .filter__container > h4 {
   margin-bottom: 0.5rem;
-}
+} */
 .filter__container > .categoryy > button {
   display: block;
   text-align: center;
@@ -42,9 +42,11 @@
   padding: 6px 2rem;
   border: none;
   color: white;
-  background-color: orangered;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: #f95738;
   border-radius: 3px;
-  margin-right: 6px;
+  margin-bottom: 6px;
 }
 
 @media screen and (max-width: 700px) {
