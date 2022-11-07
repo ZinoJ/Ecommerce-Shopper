@@ -14,7 +14,6 @@
 }
 .product-list > .top {
   width: 100%;
-  border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +32,6 @@
 .sort {
   display: flex;
   align-items: center;
-  margin-left: 10px;
   gap: 1rem;
   
 }
@@ -61,6 +59,14 @@
   }
   .search {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .grids {
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    background-color: transparent;
   }
 }
 

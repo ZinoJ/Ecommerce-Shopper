@@ -3,6 +3,12 @@
   padding: 0.6rem 0;
 }
 
+.checkout__details > form > div > .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .checkout__details > .card {
   width: 100%;
   max-width: 500px;
