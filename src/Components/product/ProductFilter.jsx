@@ -71,7 +71,7 @@ function ProductFilter({showMenu, setShowMenu}) {
         </div>
         <button className="filter__button" onClick={clearFilter}>CLEAR</button>
         <br />
-        <button className="closeFilter" onClick={() => setShowMenu(!showMenu)}>CLOSE</button>
+        {showMenu && <button className="closeFilter" onClick={() => setShowMenu(!showMenu)}>CLOSE</button>}
       </div>
     </div>
   );
