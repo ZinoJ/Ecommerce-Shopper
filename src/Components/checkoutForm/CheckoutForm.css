@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.checkout > form {
+.checkout > .formContainer {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .checkout > form {
+  .checkout > .formContainer {
     flex-direction: column;
   }
 }
@@ -62,4 +62,28 @@
 .button:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.paystack-button {
+  cursor: pointer;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background-color: #0d1b2a;
+  font-weight: bold;
+  color: #e0eafc;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+  height: 45px;
+}
+
+.paystack-button:hover {
+  background-color: #0d1b2a;
+}
+
+.paystack-button:focus {
+  outline: none;
 }

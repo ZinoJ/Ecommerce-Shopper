@@ -37,17 +37,20 @@ function Checkout() {
   useEffect(() => {
     //http://localhost:4245/create-payment-intent
     // Create PaymentIntent as soon as the page loads
-    fetch("https://eshopper-react-firebase.herokuapp.com/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        items: cartItems,
-        userEmail: customerEmail,
-        shipping: shippingAddress,
-        billing: billingAddress,
-        description,
-      }),
-    })
+    fetch(
+      "https://eshopper-react-firebase.herokuapp.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cartItems,
+          userEmail: customerEmail,
+          shipping: shippingAddress,
+          billing: billingAddress,
+          description,
+        }),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -60,9 +63,9 @@ function Checkout() {
       .catch((error) => {
         setMessage("Failed to initialize checkout");
         toast.error("Something went wrong");
-        console.log(error);
+        // console.log(error);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const appearance = {
@@ -75,7 +78,9 @@ function Checkout() {
 
   return (
     <>
-      <div style={{width: '80%',margin: "0.5rem auto"}}>{!clientSecret && <h3>{message}</h3>}</div>
+      <div style={{ width: "80%", margin: "0.5rem auto" }}>
+        {!clientSecret && <h3>{message}</h3>}
+      </div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

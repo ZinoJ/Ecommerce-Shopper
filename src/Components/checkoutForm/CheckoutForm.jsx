@@ -5,6 +5,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import { selectBillingAddress } from "../../Redux/slice/checksoutSlice";
 import CheckoutSummary from "../../Pages/checkout/CheckoutSummary";
 import spinnerImage from "../../Assets/spinner.jpg";
 import { toast } from "react-toastify";
@@ -18,7 +19,9 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../Firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { selectEmail, selectUserID } from "../../Redux/slice/authSlice";
+import { PaystackButton } from 'react-paystack';
 
+const publicKey = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
 export default function CheckoutForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +31,7 @@ export default function CheckoutForm() {
   const cartTotalAmount = useSelector(selectCartTotalAmount);
   const stripe = useStripe();
   const elements = useElements();
-
+  const billingAddress = useSelector(selectBillingAddress);
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -82,6 +85,7 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    // eslint-disable-next-line no-unused-vars
     const confirmPayment = await stripe
       .confirmPayment({
         elements,
@@ -109,14 +113,36 @@ export default function CheckoutForm() {
     setIsLoading(false);
   };
 
+  const componentPropsPayStack = {
+    email: userEmail,
+    amount: cartTotalAmount * 100,
+    metadata: {
+      name: billingAddress.name,
+      phone: billingAddress.phone
+    },
+    publicKey,
+    text: "Pay with PayStack",
+    onSuccess: ({ reference }) => {
+      toast.success(
+        `Your purchase was successful! Transaction reference: ${reference}`
+      );
+      saveOrder()
+      navigate("/checkout_success");
+
+      // resetForm();
+    },
+    // onClose: () => alert("Wait! You need this oil, don't go!!!!"),
+  };
+  
   return (
     <div className="container">
       <div className="checkout">
       <h2>Checkout</h2>
       <br />
-      <form onSubmit={handleSubmit}>
+      <div className="formContainer">
         <div className="width">
           <CheckoutSummary />
+          <PaystackButton className="paystack-button" {...componentPropsPayStack} />
         </div>
         <div className="width pay">
           <h3>Stripe Checkout</h3>
@@ -125,6 +151,7 @@ export default function CheckoutForm() {
             disabled={isLoading || !stripe || !elements}
             id="submit"
             className="button"
+            onClick={handleSubmit}
           >
             <span id="button-text">
               {isLoading ? (
@@ -134,14 +161,14 @@ export default function CheckoutForm() {
                   style={{ width: "20px" }}
                 />
               ) : (
-                "Pay now"
+                "PAY WITH STRIPE"
               )}
             </span>
           </button>
           {/* Show any error or success messages */}
           {message && <div id="payment-message">{message}</div>}
         </div>
-      </form>
+      </div>
     </div>
     </div>
   );
